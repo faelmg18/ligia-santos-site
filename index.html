@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lígia Santos — Beauty • Jewelry • Lifestyle</title>
+<meta name="description" content="Curadoria de beleza, semijoias e estilo por Lígia Santos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f6efe6;--paper:#fbf7f1;--ink:#1f1813;--brown:#2a1d14;
+  --orange:#d9531e;--orange-d:#b8431a;--gold:#a47d45;--gold-l:#e3c68f;--line:#e2d6c5;
+  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Jost",system-ui,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;color:inherit}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.wrap{padding:0 clamp(20px,5vw,72px)}
+.eyebrow{font-size:11px;letter-spacing:.38em;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.05}
+h2{font-size:clamp(36px,5vw,64px)}
+h2 em,h1 em{font-style:italic;color:var(--orange)}
+
+/* header */
+header{position:fixed;inset:0 0 auto 0;z-index:30;transition:background .4s,box-shadow .4s,transform .4s var(--ease)}
+header.solid{background:rgba(251,247,241,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:84px;transition:height .4s}
+header.solid .bar{height:66px}
+.logo{font-family:var(--serif);font-size:26px;letter-spacing:.28em;text-align:center;line-height:1}
+.logo small{display:block;font:400 8.5px var(--sans);letter-spacing:.42em;margin-top:6px;color:var(--gold)}
+nav{display:flex;gap:26px;white-space:nowrap;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+nav a{position:relative;padding:4px 0}
+nav a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
+nav a:hover::after{transform:scaleX(1)}
+.tools{display:flex;gap:18px;align-items:center;justify-content:flex-end;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.burger{display:none;background:none;border:0;font-size:22px}
+.bar>*{flex:1}.bar nav{flex:2;justify-content:center}.bar .logo{flex:1.2}
+.bar .left{display:flex}
+
+/* hero */
+.hero{min-height:100svh;padding-top:84px;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:40px;position:relative;overflow:hidden;background:radial-gradient(1000px 600px at 85% 40%,#f3dfc9 0,transparent 60%),var(--cream)}
+.hero-copy{padding:40px 0 60px}
+.hero h1{font-size:clamp(54px,8.4vw,128px);letter-spacing:-.01em;margin:22px 0 26px}
+.hero h1 span{display:block;overflow:hidden}
+.hero h1 i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1.2s var(--ease) forwards}
+.hero h1 span:nth-child(2) i{animation-delay:.12s}.hero h1 span:nth-child(3) i{animation-delay:.24s}
+.hero p.lead{font-family:var(--serif);font-size:clamp(20px,2vw,26px);max-width:460px;color:#4a3d32;opacity:0;animation:fade 1s .7s forwards}
+.cta{display:inline-flex;align-items:center;gap:14px;margin-top:30px;padding:16px 30px;background:var(--ink);color:var(--paper);font-size:12px;letter-spacing:.22em;text-transform:uppercase;border:0;position:relative;overflow:hidden;transition:.4s var(--ease);opacity:0;animation:fade 1s .95s forwards}
+.cta::before{content:"";position:absolute;inset:0;background:var(--orange);transform:translateY(101%);transition:transform .45s var(--ease)}
+.cta span,.cta svg{position:relative}
+.cta:hover::before{transform:none}
+.cta.ghost{background:none;color:var(--ink);border:1px solid var(--ink);opacity:1;animation:none}
+.cta.ghost:hover{color:var(--paper);border-color:var(--orange)}
+.arch{position:relative;height:min(78svh,760px);justify-self:center;aspect-ratio:3/4;margin-right:clamp(0px,3vw,48px)}
+.arch-img{position:absolute;inset:0;border-radius:999px 999px 6px 6px;overflow:hidden;box-shadow:0 40px 80px -30px rgba(80,40,10,.5);opacity:0;animation:fade 1.4s .2s forwards}
+.arch-img img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;transform:scale(1.18);animation:zoom 14s ease-out forwards}
+.arch::before{content:"";position:absolute;inset:-14px;border:1px solid var(--gold);border-radius:999px 999px 6px 6px;opacity:.55;transform:scale(.96);animation:ring 1.6s .5s var(--ease) forwards}
+.curtain{position:absolute;inset:0 -12% auto -12%;height:100%;pointer-events:none;z-index:3}
+.thread{position:absolute;top:0;width:1px;height:0;background:linear-gradient(#e7cf9f,#b8935a 70%,rgba(184,147,90,0));transform-origin:top;animation:drop 2.2s var(--ease) forwards,sway var(--sw) ease-in-out infinite alternate}
+.thread::after{content:"";position:absolute;bottom:-2px;left:-1.5px;width:4px;height:4px;border-radius:50%;background:var(--gold-l);box-shadow:0 0 8px 2px rgba(227,198,143,.7)}
+.seal{position:absolute;left:-54px;bottom:60px;width:118px;height:118px;z-index:4;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;animation:fade 1s 1.2s both}
+.seal svg{position:absolute;inset:0;animation:spin 22s linear infinite}
+.seal text{font:400 9.2px var(--sans);letter-spacing:.3em;fill:#fff}
+.seal b{font:italic 400 34px var(--serif)}
+.scroll{position:absolute;bottom:26px;left:50%;font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll::after{content:"";width:1px;height:42px;background:var(--gold);transform-origin:top;animation:line 2s infinite}
+
+@keyframes up{to{transform:none}}@keyframes fade{to{opacity:1}}
+@keyframes zoom{to{transform:scale(1)}}@keyframes ring{to{transform:scale(1)}}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes line{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+@keyframes drop{to{height:var(--h)}}@keyframes sway{from{transform:rotate(-1.4deg)}to{transform:rotate(1.4deg)}}
+
+/* faixa */
+.strip{border-block:1px solid var(--gold);padding:26px 0;overflow:hidden;white-space:nowrap;background:var(--paper);-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.strip div{display:inline-block;animation:slide 70s linear infinite;font:italic 300 clamp(34px,4.4vw,58px)/1 var(--serif);color:var(--ink)}
+.strip:hover div{animation-play-state:paused}
+.strip span{margin:0 34px}.strip span:nth-child(even){font-style:normal;color:var(--orange);font-size:.5em;vertical-align:middle}
+@keyframes slide{to{transform:translateX(-50%)}}
+/* categorias */
+.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;padding-block:90px 20px}
+.cat{position:relative;aspect-ratio:3/4.2;overflow:hidden;display:flex;align-items:flex-end;padding:22px;color:#fff;isolation:isolate;border-radius:3px}
+.cat::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--g);transition:transform .9s var(--ease)}
+.cat::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(transparent 40%,rgba(20,10,5,.55))}
+.cat:hover::before{transform:scale(1.12)}
+.cat svg{position:absolute;top:22px;right:22px;width:34px;stroke:#fff;fill:none;stroke-width:1.1;opacity:.85}
+.cat h3{font-size:30px}.cat small{display:block;font-size:10px;letter-spacing:.3em;text-transform:uppercase;opacity:.8;margin-top:6px;transition:.4s}
+.cat:hover small{letter-spacing:.42em}
+
+/* loja */
+.shop{padding-block:100px 60px}
+.shop-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:46px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{background:none;border:1px solid var(--line);padding:10px 20px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border-radius:40px;transition:.3s}
+.tabs button:hover{border-color:var(--ink)}
+.tabs button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px 22px}
+.card{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.card.in{opacity:1;transform:none}
+.card.hide{display:none}
+.pic{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--g);border-radius:3px;display:grid;place-items:center}
+.pic svg{width:46%;stroke:rgba(255,255,255,.92);fill:none;stroke-width:1.1;transition:transform .8s var(--ease)}
+.card:hover .pic svg{transform:scale(1.12) rotate(-4deg)}
+.pic::after{content:"foto em breve";position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.pic::before{content:"";position:absolute;top:0;left:-70%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-18deg);transition:left .9s var(--ease)}
+.card:hover .pic::before{left:130%}
+.badge{position:absolute;top:14px;left:14px;z-index:2;background:var(--paper);color:var(--ink);font-size:9px;letter-spacing:.24em;text-transform:uppercase;padding:6px 11px;border-radius:30px}
+.badge.u{background:var(--orange);color:#fff}
+.info{padding:16px 2px 0;display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.info small{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
+.info h3{font-size:25px;margin-top:4px}
+.price{font-family:var(--serif);font-size:23px;white-space:nowrap}
+.add{display:block;text-align:center;width:100%;margin-top:14px;padding:13px;background:none;border:1px solid var(--ink);font-size:11px;letter-spacing:.22em;text-transform:uppercase;transition:.35s var(--ease);position:relative;overflow:hidden}
+.add:hover{background:var(--ink);color:var(--paper)}
+.add:disabled{border-color:var(--line);color:#9a8c7c;cursor:default}
+.add.out{border-color:var(--gold);color:var(--gold)}.add.out:hover{background:var(--gold);color:#fff}
+.note{margin-top:34px;font-size:12px;color:#8a7a68}
+
+/* desapegos */
+.des{background:var(--brown);color:var(--paper);display:grid;grid-template-columns:1fr 1fr;min-height:620px;overflow:hidden}
+.des-copy{padding:90px clamp(24px,7vw,110px);display:flex;flex-direction:column;justify-content:center}
+.des h2{margin:18px 0 24px}.des h2 em{color:var(--gold-l)}
+.des p{font-family:var(--serif);font-size:24px;max-width:460px;color:#d8c8b4}
+.des .cta{background:var(--orange);opacity:1;animation:none}.des .cta::before{background:var(--paper)}.des .cta:hover{color:var(--ink)}
+.des-img{position:relative;overflow:hidden}
+.des-img img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;object-position:50% 62%;will-change:transform}
+.des-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--brown),transparent 30%)}
+.counter{display:flex;gap:44px;margin-top:44px}
+.counter b{display:block;font:400 54px var(--serif);color:var(--gold-l);line-height:1}
+.counter span{font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#bba98f}
+
+/* escolhas / parceiros */
+.picks{padding-block:110px 40px}
+.picks-top{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:50px}
+.picks-top p{font-family:var(--serif);font-size:23px;color:#5a4b3d;margin:0;max-width:520px}
+.partners{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.partners div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:46px 20px;text-align:center;font-family:var(--serif);font-size:26px;letter-spacing:.18em;color:#a79683;transition:.4s}
+.partners div:hover{color:var(--orange);background:var(--cream)}
+.biz{margin-top:30px;font-size:13px;color:#7a6a58}.biz a{color:var(--orange);border-bottom:1px solid currentColor}
+
+/* sobre */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,7vw,110px);align-items:center;padding-block:110px}
+.about-img{position:relative;aspect-ratio:4/5;border-radius:3px;overflow:hidden}
+.about-img img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.about-img::after{content:"";position:absolute;inset:16px;border:1px solid rgba(255,255,255,.7);pointer-events:none}
+.about p{font-family:var(--serif);font-size:25px;color:#43362b;max-width:560px}
+.about h2{margin:16px 0 28px}
+.sign{font:italic 400 44px var(--serif);color:var(--orange);margin-top:20px}
+
+/* rodapé */
+footer{background:var(--ink);color:#cbbca8;padding:80px 0 34px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;padding-bottom:50px;border-bottom:1px solid #3b3128}
+footer .logo{text-align:left;color:var(--paper);font-size:30px}
+footer h4{margin:0 0 16px;font:400 11px var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+footer a{display:block;padding:4px 0;transition:.3s}footer a:hover{color:var(--gold-l);padding-left:6px}
+.copy{padding-top:26px;font-size:11px;letter-spacing:.12em;color:#7d6e5d;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:1000px){
+  nav{display:none}.burger{display:block}.bar .left{flex:0}.tools .hide-m{display:none}
+  nav.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);padding:10px 24px 20px;border-bottom:1px solid var(--line)}
+  nav.open a{padding:14px 0;border-bottom:1px solid var(--line)}
+  .hero{grid-template-columns:1fr;text-align:left;padding-top:100px;gap:0}
+  .arch{height:auto;width:min(380px,82%);margin:0 auto 70px}.seal{left:-24px;width:96px;height:96px}
+  .scroll{display:none}
+  .cats{grid-template-columns:repeat(2,1fr)}.cat:last-child{grid-column:span 2;aspect-ratio:16/9}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .des,.about,.picks-top,.fgrid{grid-template-columns:1fr}
+  .des-img{min-height:420px}.partners{grid-template-columns:repeat(2,1fr)}
+  .picks-top{gap:20px}
+}
+@media(max-width:560px){.logo{font-size:20px}.logo small{display:none}.grid{gap:28px 12px}.info{flex-direction:column;gap:4px}.info h3{font-size:21px}}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero h1 i,.hero p.lead,.cta,.arch-img,.seal{opacity:1;transform:none}
+  .arch-img img{transform:none}.rv,.card{opacity:1;transform:none}.thread{height:var(--h)}
+}
+</style>
+</head>
+<body>
+
+<header id="hd">
+  <div class="wrap bar">
+    <div class="left"><button class="burger" id="burger" aria-label="Abrir menu">☰</button><nav id="nav">
+      <a href="#loja" data-f="semijoias">Semijoias</a><a href="#loja" data-f="beleza">Beleza</a><a href="#loja" data-f="solar">Proteção solar</a><a href="#desapegos">Desapegos</a><a href="#sobre">Sobre</a>
+    </nav></div>
+    <a class="logo" href="#">LÍGIA SANTOS<small>BEAUTY • JEWELRY • LIFESTYLE</small></a>
+    <div class="tools"><a class="hide-m" href="#parcerias">Parcerias</a><a class="hide-m" href="#contato">Contato</a></div>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <div class="hero-copy">
+    <div class="eyebrow">Curadoria • Lígia Santos</div>
+    <h1><span><i>Beleza,</i></span><span><i><em>brilho</em> &amp;</i></span><span><i>boas escolhas.</i></span></h1>
+    <p class="lead">Beleza, semijoias e estilo que fazem sentido para você, escolhidos um a um.</p>
+    <a class="cta" href="#loja"><span>Conheça a curadoria</span><svg width="22" height="10" viewBox="0 0 22 10" fill="none" stroke="currentColor"><path d="M0 5h21M17 1l4 4-4 4"/></svg></a>
+  </div>
+  <div class="arch">
+    <div class="curtain" id="curtain" aria-hidden="true"></div>
+    <div class="arch-img"><img src="ligia-hero.jpeg" alt="Lígia Santos de vestido laranja diante de uma cortina de fios dourados"></div>
+    <div class="seal" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="c" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#c">SEMIJOIAS • BELEZA • ESTILO •</textPath></text></svg><b>L</b></div>
+  </div>
+  <div class="scroll">role</div>
+</section>
+
+<div class="strip" aria-hidden="true"><div id="mq"></div></div>
+
+<section class="wrap cats rv">
+  <a class="cat" href="#loja" data-f="semijoias" style="--g:linear-gradient(160deg,#e3b46f,#9b6a2c)"><svg viewBox="0 0 40 40"><circle cx="20" cy="22" r="11"/><path d="M20 11V5"/></svg><div><h3>Semijoias</h3><small>Ver coleção</small></div></a>
+  <a class="cat" href="#loja" data-f="beleza" style="--g:linear-gradient(160deg,#e8a98a,#b5543a)"><svg viewBox="0 0 40 40"><rect x="14" y="14" width="12" height="22" rx="3"/><path d="M17 14V8h6v6"/></svg><div><h3>Beleza</h3><small>Ver seleção</small></div></a>
+  <a class="cat" href="#loja" data-f="solar" style="--g:linear-gradient(160deg,#f0c06a,#d9531e)"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="7"/><path d="M20 4v5M20 31v5M4 20h5M31 20h5M9 9l3 3M28 28l3 3M31 9l-3 3M12 28l-3 3"/></svg><div><h3>Proteção solar</h3><small>Ver seleção</small></div></a>
+  <a class="cat" href="#desapegos" style="--g:linear-gradient(160deg,#6b4a35,#2a1d14)"><svg viewBox="0 0 40 40"><path d="M8 14h24l-2 20H10zM14 14a6 6 0 0 1 12 0"/></svg><div><h3>Desapegos</h3><small>Peças únicas</small></div></a>
+  <a class="cat" href="#loja" style="--g:linear-gradient(160deg,#c9956b,#7a3d22)"><svg viewBox="0 0 40 40"><path d="M20 6l4 10 10 1-8 7 3 10-9-6-9 6 3-10-8-7 10-1z"/></svg><div><h3>Escolhas da Lígia</h3><small>Meus favoritos</small></div></a>
+</section>
+
+<section class="wrap shop" id="loja">
+  <div class="shop-head rv">
+    <div><div class="eyebrow">A loja</div><h2>Mais <em>desejados</em></h2></div>
+    <div class="tabs" id="tabs">
+      <button class="on" data-f="all">Tudo</button><button data-f="semijoias">Semijoias</button><button data-f="beleza">Beleza</button><button data-f="solar">Proteção solar</button><button data-f="desapego">Desapegos</button>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+  <p class="note">Ao comprar pelos links desta página, a Lígia pode receber uma comissão, sem custo extra para você. Produtos de exemplo; as fotos reais entram quando ela enviar.</p>
+</section>
+
+<section class="des" id="desapegos">
+  <div class="des-copy">
+    <div class="eyebrow">Edição especial</div>
+    <h2>Desapegos <em>da Lígia</em></h2>
+    <p>Peças que fizeram parte da minha história, agora prontas para fazer parte da sua. Cada uma é única: quando vai embora, não volta.</p>
+    <div class="counter"><div><b data-to="1">0</b><span>de cada peça</span></div><div><b data-to="100" data-suf="%">0</b><span>curadas por mim</span></div></div>
+    <a class="cta" href="#loja" data-f="desapego"><span>Garimpe agora</span><svg width="22" height="10" viewBox="0 0 22 10" fill="none" stroke="currentColor"><path d="M0 5h21M17 1l4 4-4 4"/></svg></a>
+  </div>
+  <div class="des-img"><img id="par" src="ligia-hero.jpeg" alt=""></div>
+</section>
+
+<section class="wrap picks" id="parcerias">
+  <div class="picks-top rv">
+    <div><div class="eyebrow">Parcerias</div><h2>Marcas que combinam com <em>minha curadoria</em></h2></div>
+    <p>Só indico o que eu uso e confio. Quando o produto é de uma marca parceira, você vai direto para a loja dela, com a minha indicação.</p>
+  </div>
+  <div class="partners rv"><div>MARCA</div><div>MARCA</div><div>MARCA</div><div>MARCA</div></div>
+  <p class="biz rv">É uma marca e quer conversar? <a href="mailto:contato@ligiasantos.com.br">Fale com a Lígia</a></p>
+</section>
+
+<section class="wrap about" id="sobre">
+  <div class="about-img rv"><img src="ligia-hero.jpeg" alt="Retrato de Lígia Santos"></div>
+  <div class="rv">
+    <div class="eyebrow">Sobre</div>
+    <h2>Olá, eu sou a <em>Lígia</em></h2>
+    <p>Beleza, estilo e boas escolhas. Este é um espaço para compartilhar aquilo que eu gosto, recomendo e seleciono, com links diretos para você comprar na loja de cada marca.</p>
+    <p style="font-size:19px;color:#8a7a68;margin-top:18px">[Texto provisório: aqui entra a história dela, com as palavras dela.]</p>
+    <div class="sign">Lígia</div>
+  </div>
+</section>
+
+<footer id="contato">
+  <div class="wrap">
+    <div class="fgrid">
+      <div><div class="logo">LÍGIA SANTOS<small>BEAUTY • JEWELRY • LIFESTYLE</small></div></div>
+      <div><h4>Navegar</h4><a href="#loja">Loja</a><a href="#desapegos">Desapegos</a><a href="#parcerias">Parcerias</a><a href="#sobre">Sobre</a></div>
+      <div><h4>Fale comigo</h4><a href="#">Instagram</a><a href="#">WhatsApp</a><a href="#">Política de privacidade</a><a href="#">Trocas e devoluções</a></div>
+    </div>
+    <div class="copy"><span>© 2026 Lígia Santos</span><span>Links de parceiros podem render comissão à Lígia</span></div>
+  </div>
+</footer>
+
+
+<script>
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+
+/* produtos de exemplo */
+const G={semijoias:"linear-gradient(160deg,#e9c58b,#a77532)",beleza:"linear-gradient(160deg,#eab79b,#b9553a)",solar:"linear-gradient(160deg,#f3cb7e,#d9531e)",desapego:"linear-gradient(160deg,#7b5a45,#33241a)"};
+const ICON={
+ ring:'<svg viewBox="0 0 40 40"><circle cx="20" cy="23" r="10"/><path d="M15 9l5-5 5 5-5 5z"/></svg>',
+ hoop:'<svg viewBox="0 0 40 40"><circle cx="20" cy="22" r="12"/><circle cx="20" cy="22" r="8"/></svg>',
+ heart:'<svg viewBox="0 0 40 40"><path d="M20 34C6 24 6 12 13 10c4-1 7 2 7 5 0-3 3-6 7-5 7 2 7 14-7 24z"/></svg>',
+ bottle:'<svg viewBox="0 0 40 40"><rect x="13" y="15" width="14" height="21" rx="3"/><path d="M17 15V9h6v6M17 5h6"/></svg>',
+ sun:'<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="7"/><path d="M20 4v5M20 31v5M4 20h5M31 20h5M9 9l3 3M28 28l3 3M31 9l-3 3M12 28l-3 3"/></svg>',
+ bag:'<svg viewBox="0 0 40 40"><path d="M8 14h24l-2 20H10zM14 14a6 6 0 0 1 12 0"/></svg>',
+ dress:'<svg viewBox="0 0 40 40"><path d="M15 4l5 5 5-5 3 10-4 4 5 18H11l5-18-4-4z"/></svg>'};
+const P=[
+ {id:1,t:"Brinco Argola Média",c:"semijoias",l:"Semijoias",i:"hoop",b:"Novo"},
+ {id:2,t:"Colar Coração",c:"semijoias",l:"Escolha da Lígia",i:"heart"},
+ {id:3,t:"Anel Solitário",c:"semijoias",l:"Semijoias",i:"ring"},
+ {id:4,t:"Protetor Solar Facial",c:"solar",l:"Proteção solar",i:"sun"},
+ {id:5,t:"Antioxidante Facial",c:"beleza",l:"Beleza",i:"bottle"},
+ {id:6,t:"Sérum Iluminador",c:"beleza",l:"Beleza",i:"bottle"},
+ {id:7,t:"Vestido Drapeado",c:"desapego",l:"Desapego • tam. M",i:"dress",u:1},
+ {id:8,t:"Bolsa de Festa",c:"desapego",l:"Desapego",i:"bag",u:1}];
+
+$("#grid").innerHTML=P.map(x=>`<article class="card" data-c="${x.c}">
+ <div class="pic" style="--g:${G[x.c]}">${x.u?'<span class="badge u">Peça única</span>':x.b?`<span class="badge">${x.b}</span>`:""}${ICON[x.i]}</div>
+ <div class="info"><div><small>${x.l}</small><h3>${x.t}</h3></div></div>
+ ${x.u?'<a class="add out" href="#" target="_blank" rel="noopener">Chamar no WhatsApp</a>':'<a class="add" href="#" target="_blank" rel="sponsored noopener">Ver na loja ↗</a>'}</article>`).join("");
+
+/* filtros */
+function filtro(f){
+  $$("#tabs button").forEach(b=>b.classList.toggle("on",b.dataset.f===f||(!f&&b.dataset.f==="all")));
+  $$(".card").forEach(c=>c.classList.toggle("hide",f&&f!=="all"&&c.dataset.c!==f));
+  obs();
+}
+$("#tabs").onclick=e=>{const b=e.target.closest("button");if(b)filtro(b.dataset.f)};
+$$("[data-f]:not(button)").forEach(a=>a.addEventListener("click",()=>{filtro(a.dataset.f);$("#nav").classList.remove("open")}));
+
+/* cabeçalho e menu */
+const hd=$("#hd");addEventListener("scroll",()=>hd.classList.toggle("solid",scrollY>40),{passive:true});
+$("#burger").onclick=()=>$("#nav").classList.toggle("open");
+
+/* cortina de fios dourados */
+const cu=$("#curtain");
+for(let i=0;i<46;i++){const t=document.createElement("i");t.className="thread";
+  t.style.cssText=`left:${i/45*100}%;--h:${5+Math.min(1,Math.max(0,(Math.abs(i/45-.5)-.2)/.2))*(8+Math.random()*30)}%;--sw:${3+Math.random()*3}s;animation-delay:${Math.random()*1.4}s,0s;opacity:${.45+Math.random()*.5}`;cu.appendChild(t)}
+
+/* revelar ao rolar */
+let io;function obs(){io&&io.disconnect();io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const c=e.target;
+  c.style.transitionDelay=c.classList.contains("card")?(($$(".card:not(.hide)").indexOf(c)%4)*90)+"ms":"0ms";c.classList.add("in");io.unobserve(c)}}),{threshold:.12});
+  $$(".rv:not(.in),.card:not(.hide):not(.in)").forEach(el=>io.observe(el))}
+obs();
+
+/* contador e paralaxe */
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,to=+el.dataset.to,s=el.dataset.suf||"";let t0;
+  const f=t=>{t0??=t;const k=Math.min((t-t0)/1400,1);el.textContent=Math.round(to*(1-Math.pow(1-k,3)))+s;k<1&&requestAnimationFrame(f)};requestAnimationFrame(f)}),{threshold:.6});
+$$("[data-to]").forEach(el=>cio.observe(el));
+$("#mq").innerHTML=("<span>Semijoias</span><span>✦</span><span>Beleza</span><span>✦</span><span>Proteção solar</span><span>✦</span><span>Desapegos</span><span>✦</span>").repeat(6);
+const par=$("#par"),des=$(".des");
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches)addEventListener("scroll",()=>{const r=des.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)par.style.transform=`translateY(${(r.top/innerHeight)*-9}%)`},{passive:true});
+</script>
+</body>
+</html>
