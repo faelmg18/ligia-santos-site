@@ -120,7 +120,6 @@ nav a:hover::after{transform:scaleX(1)}
 .add:hover{background:var(--ink);color:var(--paper)}
 .add:disabled{border-color:var(--line);color:#9a8c7c;cursor:default}
 .add.out{border-color:var(--gold);color:var(--gold)}.add.out:hover{background:var(--gold);color:#fff}
-.note{margin-top:34px;font-size:12px;color:#8a7a68}
 
 /* desapegos */
 .des{background:var(--brown);color:var(--paper);display:grid;grid-template-columns:1fr 1fr;min-height:620px;overflow:hidden}
@@ -129,7 +128,12 @@ nav a:hover::after{transform:scaleX(1)}
 .des p{font-family:var(--serif);font-size:24px;max-width:460px;color:#d8c8b4}
 .des .cta{align-self:flex-start;background:var(--orange);opacity:1;animation:none}.des .cta::before{background:var(--paper)}.des .cta:hover{color:var(--ink)}
 .des-img{position:relative;overflow:hidden}
-.des-img img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;object-position:50% 6%;will-change:transform}
+#par{position:absolute;inset:-12% 0;will-change:transform}
+#par img,#par video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s var(--ease)}
+#par .on{opacity:1;animation:kb 8s ease-out both;transform-origin:50% 0}#par video.on{animation:none}
+@keyframes kb{from{transform:scale(1.12)}to{transform:scale(1)}}
+.dots{position:absolute;z-index:2;left:50%;bottom:26px;display:flex;gap:10px;transform:translateX(-50%)}
+.dots b{width:7px;height:7px;border-radius:50%;background:#fff;opacity:.4;transition:.4s;cursor:pointer}.dots b.on{opacity:1;width:22px;border-radius:4px;background:var(--gold-l)}
 .des-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--brown),transparent 30%)}
 .counter{display:flex;gap:44px;margin-top:44px}
 .counter b{display:block;font:400 54px var(--serif);color:var(--gold-l);line-height:1}
@@ -264,7 +268,6 @@ h2 em,h1 em{background:linear-gradient(100deg,var(--orange) 20%,var(--gold) 50%,
     </div>
   </div>
   <div class="grid" id="grid"></div>
-  <p class="note">Ao comprar pelos links desta página, a Lígia pode receber uma comissão, sem custo extra para você. Produtos de exemplo; as fotos reais entram quando ela enviar.</p>
 </section>
 
 <section class="des" id="desapegos">
@@ -275,7 +278,7 @@ h2 em,h1 em{background:linear-gradient(100deg,var(--orange) 20%,var(--gold) 50%,
     <div class="counter"><div><b data-to="1">0</b><span>de cada peça</span></div><div><b data-to="100" data-suf="%">0</b><span>curadas por mim</span></div></div>
     <a class="cta" href="#loja" data-f="desapego"><span>Garimpe agora</span><svg width="22" height="10" viewBox="0 0 22 10" fill="none" stroke="currentColor"><path d="M0 5h21M17 1l4 4-4 4"/></svg></a>
   </div>
-  <div class="des-img"><img id="par" src="ligia-hero.jpeg" alt=""></div>
+  <div class="des-img"><div id="par"></div><div class="dots"></div></div>
 </section>
 
 <section class="wrap picks" id="parcerias">
@@ -365,6 +368,14 @@ const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)retur
 $$("[data-to]").forEach(el=>cio.observe(el));
 $("#mq").innerHTML=("<span>Semijoias</span><span>✦</span><span>Beleza</span><span>✦</span><span>Proteção solar</span><span>✦</span><span>Desapegos</span><span>✦</span>").repeat(6);
 const par=$("#par"),des=$(".des");
+/* carrossel de desapegos: hoje a mesma foto; trocar por várias */
+const FOTOS=["ligia-hero.jpeg","ligia-2.jpg","ligia-video.mp4"],POS=["50% 6%","50% 20%","50% 0%"];
+par.innerHTML=FOTOS.map((u,i)=>/\.mp4$/.test(u)?`<video src="${u}" muted loop playsinline preload="auto" style="object-position:${POS[i]}"></video>`:`<img src="${u}" alt="" style="object-position:${POS[i]}">`).join("");
+$(".dots").innerHTML=FOTOS.map(()=>"<b></b>").join("");
+{const im=$$("img,video",par),dt=$$(".dots b");let k=0;
+ const go=n=>{k=n%im.length;im.forEach((e,i)=>{e.classList.toggle("on",i==k);if(e.play)i==k?e.play().catch(()=>{}):e.pause()});dt.forEach((e,i)=>e.classList.toggle("on",i==k))};
+ dt.forEach((d,i)=>d.onclick=()=>go(i));go(0);
+ if(!matchMedia("(prefers-reduced-motion:reduce)").matches)setInterval(()=>go(k+1),5000)}
 if(!matchMedia("(prefers-reduced-motion:reduce)").matches)addEventListener("scroll",()=>{const r=des.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)par.style.transform=`translateY(${(r.top/innerHeight)*-9}%)`},{passive:true});
 
 /* efeitos extras */
