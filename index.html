@@ -66,9 +66,9 @@ nav a:hover::after{transform:scaleX(1)}
 .thread{position:absolute;top:0;width:1px;height:0;background:linear-gradient(#e7cf9f,#b8935a 70%,rgba(184,147,90,0));transform-origin:top;animation:drop 2.2s var(--ease) forwards,sway var(--sw) ease-in-out infinite alternate}
 .thread::after{content:"";position:absolute;bottom:-2px;left:-1.5px;width:4px;height:4px;border-radius:50%;background:var(--gold-l);box-shadow:0 0 8px 2px rgba(227,198,143,.7)}
 .seal{position:absolute;left:-54px;bottom:60px;width:118px;height:118px;z-index:4;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;animation:fade 1s 1.2s both}
-.seal svg{position:absolute;inset:0;animation:spin 22s linear infinite}
-.seal text{font:400 9.2px var(--sans);letter-spacing:.3em;fill:#fff}
-.seal b{font:italic 400 34px var(--serif)}
+.seal>svg{position:absolute;inset:0;animation:spin 22s linear infinite}
+.seal text{font:400 10px var(--sans);fill:#fff}
+.seal .mono{position:relative;width:92px;height:92px;display:block}.seal .mono svg{width:100%;height:100%}
 .scroll{position:absolute;bottom:26px;left:50%;font-size:10px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);display:flex;flex-direction:column;align-items:center;gap:10px}
 .scroll::after{content:"";width:1px;height:42px;background:var(--gold);transform-origin:top;animation:line 2s infinite}
 
@@ -84,10 +84,10 @@ nav a:hover::after{transform:scaleX(1)}
 .strip span{margin:0 34px}.strip span:nth-child(even){font-style:normal;color:var(--orange);font-size:.5em;vertical-align:middle}
 @keyframes slide{to{transform:translateX(-50%)}}
 /* categorias */
-.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;padding-block:90px 20px}
+.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;padding-block:44px 20px}
 .cat{position:relative;aspect-ratio:3/4.2;overflow:hidden;display:flex;align-items:flex-end;padding:22px;color:#fff;isolation:isolate;border-radius:3px}
 .cat::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--g);transition:transform .9s var(--ease)}
-.cat::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(transparent 40%,rgba(20,10,5,.55))}
+.cat::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(circle at var(--hx,50%) var(--hy,30%),rgba(255,255,255,.3),transparent 46%),linear-gradient(transparent 40%,rgba(20,10,5,.55))}
 .cat:hover::before{transform:scale(1.12)}
 .cat svg{position:absolute;top:22px;right:22px;width:34px;stroke:#fff;fill:none;stroke-width:1.1;opacity:.85}
 .cat h3{font-size:30px}.cat small{display:block;font-size:10px;letter-spacing:.3em;text-transform:uppercase;opacity:.8;margin-top:6px;transition:.4s}
@@ -165,6 +165,34 @@ footer a{display:block;padding:4px 0;transition:.3s}footer a:hover{color:var(--g
 .rv{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .rv.in{opacity:1;transform:none}
 
+/* efeitos extras */
+.cats-head{padding-top:90px}
+.cat:nth-child(2){--i:1}.cat:nth-child(3){--i:2}.cat:nth-child(4){--i:3}.cat:nth-child(5){--i:4}
+@keyframes rise{from{opacity:0;transform:translateY(60px) scale(.94)}}
+.cats.in .cat{animation:rise 1.1s calc(var(--i,0)*.13s) var(--ease) backwards}
+.cat small{transition:letter-spacing .5s var(--ease),transform .5s var(--ease)}
+.cat:hover small{transform:translateX(6px)}
+.cat h3{transition:transform .5s var(--ease)}.cat:hover h3{transform:translateY(-6px)}
+.prog{position:fixed;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,var(--gold),var(--orange));transform:scaleX(0);transform-origin:left;z-index:50}
+header.hide{transform:translateY(-100%)}
+.hero-copy{position:relative;z-index:2}
+.arch{z-index:2;transform:translate3d(var(--mx,0px),var(--my,0px),0);transition:transform .8s var(--ease)}
+.glow{position:absolute;left:0;top:0;width:460px;height:460px;margin:-230px 0 0 -230px;border-radius:50%;background:radial-gradient(circle,rgba(227,198,143,.38),transparent 65%);pointer-events:none;z-index:1;opacity:0;transition:opacity .6s,transform .35s var(--ease)}
+.sp{position:absolute;color:var(--gold);font-style:normal;pointer-events:none;z-index:1;opacity:0;animation:tw var(--d) ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:0;transform:translateY(0) scale(.4) rotate(0)}50%{opacity:.85;transform:translateY(-26px) scale(1) rotate(45deg)}}
+.cat,.pic{transition:transform .45s var(--ease);will-change:transform}
+.cat svg{transition:transform .6s var(--ease)}.cat:hover svg{transform:rotate(14deg) scale(1.25)}
+.eyebrow{display:flex;align-items:center;gap:14px}
+.eyebrow::after{content:"";height:1px;width:0;background:var(--gold);transition:width 1.3s .3s var(--ease)}
+.rv.in .eyebrow::after{width:56px}
+.hero .eyebrow::after{width:0;animation:ln 1.3s .8s var(--ease) forwards}
+@keyframes ln{to{width:56px}}
+h2 em,h1 em{background:linear-gradient(100deg,var(--orange) 20%,var(--gold) 50%,var(--orange) 80%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:shine 7s linear infinite}
+@keyframes shine{to{background-position:-220% 0}}
+.about-img::before{content:"";position:absolute;inset:0;z-index:2;background:var(--paper);transform-origin:top;transition:transform 1.5s .2s var(--ease)}
+.about-img.in::before{transform:scaleY(0)}
+.about-img img{transform:scale(1.3);transition:transform 2.2s .2s var(--ease)}
+.about-img.in img{transform:none}
 @media(max-width:1000px){
   nav{display:none}.burger{display:block}.bar .left{flex:0}.tools .hide-m{display:none}
   nav.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);padding:10px 24px 20px;border-bottom:1px solid var(--line)}
@@ -208,13 +236,18 @@ footer a{display:block;padding:4px 0;transition:.3s}footer a:hover{color:var(--g
   <div class="arch">
     <div class="curtain" id="curtain" aria-hidden="true"></div>
     <div class="arch-img"><img src="ligia-hero.jpeg" alt="Lígia Santos de vestido laranja diante de uma cortina de fios dourados"></div>
-    <div class="seal" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="c" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#c">SEMIJOIAS • BELEZA • ESTILO •</textPath></text></svg><b>L</b></div>
+    <div class="seal" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="c" d="M60 60m-45 0a45 45 0 1 1 90 0a45 45 0 1 1-90 0"/></defs><text><textPath href="#c" textLength="281" lengthAdjust="spacing">SEMIJOIAS • BELEZA • ESTILO • </textPath></text></svg><i class="mono"><svg viewBox="0 0 100 100" fill="none">
+  <circle cx="50" cy="50" r="42" stroke="#f3d9a8" stroke-width=".6" opacity=".7"/>
+  <path d="M50 4l2.4 3.4L50 10.8 47.6 7.4z" fill="#f3d9a8"/>
+  <g transform="translate(19.79 10.60) scale(0.147)"><path d="M 115 71 L 115 74 L 125 74 L 126 75 L 129 75 L 130 76 L 134 77 L 136 79 L 137 79 L 146 88 L 148 92 L 148 94 L 149 95 L 149 99 L 150 100 L 150 128 L 148 130 L 143 131 L 131 137 L 128 140 L 123 143 L 116 150 L 116 151 L 112 155 L 112 156 L 108 161 L 104 169 L 104 171 L 101 178 L 101 181 L 100 182 L 100 186 L 99 187 L 99 209 L 100 210 L 100 213 L 101 214 L 102 220 L 109 233 L 119 244 L 120 244 L 124 248 L 125 248 L 140 260 L 144 262 L 155 271 L 159 273 L 186 294 L 190 296 L 201 305 L 209 310 L 226 326 L 226 327 L 234 337 L 243 357 L 243 360 L 244 361 L 244 364 L 245 365 L 245 371 L 246 372 L 245 387 L 244 388 L 243 396 L 241 398 L 179 398 L 178 397 L 178 320 L 173 317 L 162 308 L 158 306 L 151 300 L 150 300 L 150 381 L 149 382 L 149 386 L 145 394 L 138 401 L 128 406 L 117 406 L 115 407 L 115 410 L 236 410 L 237 411 L 235 413 L 234 416 L 231 419 L 231 420 L 227 424 L 227 425 L 217 434 L 216 434 L 211 438 L 197 445 L 195 445 L 188 448 L 185 448 L 184 449 L 173 450 L 172 451 L 145 451 L 144 450 L 140 450 L 139 449 L 135 449 L 131 447 L 128 447 L 113 440 L 111 438 L 104 434 L 100 430 L 99 430 L 90 421 L 90 420 L 83 411 L 80 405 L 79 400 L 77 397 L 76 389 L 75 388 L 75 365 L 76 364 L 77 354 L 78 353 L 79 347 L 81 344 L 81 342 L 88 328 L 90 326 L 94 319 L 98 315 L 98 314 L 95 312 L 94 312 L 90 316 L 90 317 L 84 323 L 82 327 L 79 330 L 72 343 L 71 348 L 69 351 L 69 354 L 68 355 L 67 361 L 66 362 L 66 365 L 65 366 L 65 374 L 64 375 L 64 378 L 65 379 L 65 389 L 66 390 L 67 400 L 68 401 L 70 409 L 73 414 L 73 416 L 81 429 L 91 440 L 92 440 L 100 447 L 108 451 L 110 453 L 112 453 L 119 457 L 121 457 L 124 459 L 130 460 L 134 462 L 138 462 L 139 463 L 142 463 L 143 464 L 150 464 L 151 465 L 160 465 L 161 466 L 186 465 L 187 464 L 193 464 L 194 463 L 203 462 L 207 460 L 210 460 L 211 459 L 216 458 L 221 455 L 223 455 L 227 453 L 229 451 L 232 450 L 241 443 L 242 443 L 249 436 L 250 436 L 251 434 L 258 427 L 258 426 L 265 417 L 267 412 L 269 410 L 322 410 L 323 405 L 325 402 L 326 397 L 328 394 L 328 392 L 332 384 L 332 382 L 335 376 L 336 371 L 338 368 L 339 363 L 341 360 L 341 358 L 345 350 L 347 342 L 345 342 L 343 344 L 337 357 L 335 359 L 329 369 L 324 374 L 324 375 L 313 385 L 303 391 L 301 391 L 298 393 L 295 393 L 291 395 L 287 395 L 286 396 L 282 396 L 281 397 L 274 397 L 273 396 L 274 395 L 275 383 L 276 382 L 276 367 L 275 366 L 274 354 L 273 353 L 273 350 L 272 349 L 269 338 L 258 318 L 251 310 L 251 309 L 237 295 L 236 295 L 227 287 L 219 282 L 192 261 L 188 259 L 177 250 L 173 248 L 150 230 L 142 225 L 131 214 L 131 213 L 129 211 L 125 203 L 124 195 L 123 194 L 123 181 L 124 180 L 124 175 L 129 163 L 131 161 L 133 157 L 141 149 L 149 144 L 150 145 L 150 198 L 155 201 L 159 205 L 163 207 L 174 216 L 178 218 L 178 138 L 179 137 L 182 137 L 183 138 L 190 138 L 191 139 L 198 140 L 199 141 L 204 142 L 206 144 L 214 148 L 224 158 L 224 159 L 226 161 L 227 165 L 229 168 L 230 176 L 231 177 L 231 181 L 234 181 L 234 142 L 233 141 L 233 130 L 215 130 L 214 129 L 210 129 L 209 128 L 202 128 L 201 127 L 194 127 L 193 126 L 179 126 L 178 125 L 178 97 L 179 96 L 179 93 L 181 89 L 183 87 L 183 86 L 193 77 L 197 76 L 198 75 L 201 75 L 202 74 L 213 74 L 213 71 Z" fill="#fff" fill-rule="evenodd"/></g>
+</svg></i></div>
   </div>
   <div class="scroll">role</div>
 </section>
 
 <div class="strip" aria-hidden="true"><div id="mq"></div></div>
 
+<div class="wrap cats-head rv"><div class="eyebrow">Categorias</div><h2>O que você <em>procura?</em></h2></div>
 <section class="wrap cats rv">
   <a class="cat" href="#loja" data-f="semijoias" style="--g:linear-gradient(160deg,#e3b46f,#9b6a2c)"><svg viewBox="0 0 40 40"><circle cx="20" cy="22" r="11"/><path d="M20 11V5"/></svg><div><h3>Semijoias</h3><small>Ver coleção</small></div></a>
   <a class="cat" href="#loja" data-f="beleza" style="--g:linear-gradient(160deg,#e8a98a,#b5543a)"><svg viewBox="0 0 40 40"><rect x="14" y="14" width="12" height="22" rx="3"/><path d="M17 14V8h6v6"/></svg><div><h3>Beleza</h3><small>Ver seleção</small></div></a>
@@ -333,6 +366,30 @@ $$("[data-to]").forEach(el=>cio.observe(el));
 $("#mq").innerHTML=("<span>Semijoias</span><span>✦</span><span>Beleza</span><span>✦</span><span>Proteção solar</span><span>✦</span><span>Desapegos</span><span>✦</span>").repeat(6);
 const par=$("#par"),des=$(".des");
 if(!matchMedia("(prefers-reduced-motion:reduce)").matches)addEventListener("scroll",()=>{const r=des.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight)par.style.transform=`translateY(${(r.top/innerHeight)*-9}%)`},{passive:true});
+
+/* efeitos extras */
+const fine=matchMedia("(pointer:fine)").matches,calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const prog=document.createElement("div");prog.className="prog";document.body.prepend(prog);
+let ly=0;
+addEventListener("scroll",()=>{prog.style.transform=`scaleX(${scrollY/(document.documentElement.scrollHeight-innerHeight)})`;
+ if(!calm&&!$("#nav").classList.contains("open"))hd.classList.toggle("hide",scrollY>ly&&scrollY>300);ly=scrollY},{passive:true});
+if(!calm){
+ const hero=$(".hero");
+ for(let i=0;i<16;i++){const e=document.createElement("i");e.className="sp";e.textContent="✦";e.style.cssText=`left:${Math.random()*100}%;top:${10+Math.random()*80}%;font-size:${8+Math.random()*14}px;--d:${4+Math.random()*5}s;animation-delay:${Math.random()*5}s`;hero.appendChild(e)}
+ if(fine){
+  const g=document.createElement("div");g.className="glow";hero.appendChild(g);const ar=$(".arch");
+  hero.addEventListener("pointermove",e=>{const r=hero.getBoundingClientRect();g.style.transform=`translate(${e.clientX-r.left}px,${e.clientY-r.top}px)`;g.style.opacity=1;
+   ar.style.setProperty("--mx",(e.clientX/innerWidth-.5)*-18+"px");ar.style.setProperty("--my",(e.clientY/innerHeight-.5)*-12+"px")});
+  hero.addEventListener("pointerleave",()=>g.style.opacity=0);
+  document.addEventListener("pointermove",e=>{
+   const t=e.target.closest(".cat,.pic");
+   document.querySelectorAll(".tilt").forEach(x=>{if(x!==t){x.style.transform="";x.classList.remove("tilt")}});
+   if(t){const r=t.getBoundingClientRect();t.classList.add("tilt");t.style.setProperty("--hx",e.clientX-r.left+"px");t.style.setProperty("--hy",e.clientY-r.top+"px");t.style.transform=`perspective(900px) rotateY(${((e.clientX-r.left)/r.width-.5)*10}deg) rotateX(${-((e.clientY-r.top)/r.height-.5)*10}deg) scale(1.02)`}
+   const m=e.target.closest(".cta");
+   document.querySelectorAll(".cta").forEach(c=>{if(c===m){const r=c.getBoundingClientRect();c.style.translate=`${(e.clientX-r.left-r.width/2)*.2}px ${(e.clientY-r.top-r.height/2)*.3}px`}else c.style.translate=""});
+  });
+ }
+}
 </script>
 </body>
 </html>
