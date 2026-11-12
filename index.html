@@ -127,9 +127,9 @@ nav a:hover::after{transform:scaleX(1)}
 .des-copy{padding:90px clamp(24px,7vw,110px);display:flex;flex-direction:column;justify-content:center}
 .des h2{margin:18px 0 24px}.des h2 em{color:var(--gold-l)}
 .des p{font-family:var(--serif);font-size:24px;max-width:460px;color:#d8c8b4}
-.des .cta{background:var(--orange);opacity:1;animation:none}.des .cta::before{background:var(--paper)}.des .cta:hover{color:var(--ink)}
+.des .cta{align-self:flex-start;background:var(--orange);opacity:1;animation:none}.des .cta::before{background:var(--paper)}.des .cta:hover{color:var(--ink)}
 .des-img{position:relative;overflow:hidden}
-.des-img img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;object-position:50% 62%;will-change:transform}
+.des-img img{position:absolute;inset:-12% 0;width:100%;height:124%;object-fit:cover;object-position:50% 6%;will-change:transform}
 .des-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--brown),transparent 30%)}
 .counter{display:flex;gap:44px;margin-top:44px}
 .counter b{display:block;font:400 54px var(--serif);color:var(--gold-l);line-height:1}
@@ -291,19 +291,17 @@ const ICON={
  bag:'<svg viewBox="0 0 40 40"><path d="M8 14h24l-2 20H10zM14 14a6 6 0 0 1 12 0"/></svg>',
  dress:'<svg viewBox="0 0 40 40"><path d="M15 4l5 5 5-5 3 10-4 4 5 18H11l5-18-4-4z"/></svg>'};
 const P=[
- {id:1,t:"Brinco Argola Média",c:"semijoias",l:"Semijoias",i:"hoop",b:"Novo"},
- {id:2,t:"Colar Coração",c:"semijoias",l:"Escolha da Lígia",i:"heart"},
- {id:3,t:"Anel Solitário",c:"semijoias",l:"Semijoias",i:"ring"},
- {id:4,t:"Protetor Solar Facial",c:"solar",l:"Proteção solar",i:"sun"},
- {id:5,t:"Antioxidante Facial",c:"beleza",l:"Beleza",i:"bottle"},
- {id:6,t:"Sérum Iluminador",c:"beleza",l:"Beleza",i:"bottle"},
+ {id:1,t:"Brinco Argola Média",c:"semijoias",l:"Semijoias",p:"129,90",i:"hoop",b:"Novo"},
+ {id:2,t:"Colar Coração",c:"semijoias",l:"Escolha da Lígia",p:"159,00",i:"heart"},
+ {id:4,t:"Protetor Solar Facial",c:"solar",l:"Proteção solar",p:"89,90",i:"sun"},
+ {id:5,t:"Antioxidante Facial",c:"beleza",l:"Beleza",p:"199,90",i:"bottle"},
  {id:7,t:"Vestido Drapeado",c:"desapego",l:"Desapego • tam. M",i:"dress",u:1},
  {id:8,t:"Bolsa de Festa",c:"desapego",l:"Desapego",i:"bag",u:1}];
 
 $("#grid").innerHTML=P.map(x=>`<article class="card" data-c="${x.c}">
  <div class="pic" style="--g:${G[x.c]}">${x.u?'<span class="badge u">Peça única</span>':x.b?`<span class="badge">${x.b}</span>`:""}${ICON[x.i]}</div>
- <div class="info"><div><small>${x.l}</small><h3>${x.t}</h3></div></div>
- ${x.u?'<a class="add out" href="#" target="_blank" rel="noopener">Chamar no WhatsApp</a>':'<a class="add" href="#" target="_blank" rel="sponsored noopener">Ver na loja ↗</a>'}</article>`).join("");
+ <div class="info"><div><small>${x.l}</small><h3>${x.t}</h3></div>${x.p?`<div class="price">R$ ${x.p}</div>`:""}</div>
+ ${x.u?'<a class="add out" href="#" target="_blank" rel="noopener">Comprar pelo WhatsApp</a>':'<a class="add" href="#" target="_blank" rel="sponsored noopener">Comprar</a>'}</article>`).join("");
 
 /* filtros */
 function filtro(f){
